@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Warung Makan Sultan — Masakan Rumahan Premium & Higienis</title>
+  <meta name="description" content="Menyajikan cita rasa autentik khas Nusantara dengan bahan segar pilihan setiap hari. Higienis, nikmat, dan ramah di kantong.">
+  
+  <!-- Favicon / Icon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👑</text></svg>">
+  
+  <!-- Google Fonts: Poppins & Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons for aesthetics -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Custom Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sultanGreen: {
+              DEFAULT: '#2E7D32',
+              hover: '#1B5E20',
+              light: '#E8F5E9',
+              dark: '#1B5E20'
+            },
+            sultanSage: {
+              DEFAULT: '#A8D5BA',
+              light: '#E2F0D9',
+              dark: '#82B797'
+            },
+            sultanCream: {
+              DEFAULT: '#F5F0E6',
+              light: '#FAF8F5',
+              dark: '#E8E0D2'
+            },
+            sultanText: {
+              DEFAULT: '#2B2B2B',
+              dark: '#3E2723',
+              muted: '#616161'
+            }
+          },
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+          boxShadow: {
+            'soft': '0 4px 20px -2px rgba(46, 125, 50, 0.08)',
+            'soft-lg': '0 10px 30px -5px rgba(46, 125, 50, 0.12)',
+            'premium': '0 20px 40px -15px rgba(62, 39, 35, 0.15)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ===== BASE ===== */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #FDFBF7;
+      color: #2B2B2B;
+    }
+    .text-title { font-family: 'Playfair Display', serif; }
+
+    /* ===== BACKGROUND TEXTURE PATTERN ===== */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background-color: #FDFBF7;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.025'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    /* ===== DECORATIVE SPICE ELEMENTS ===== */
+    .hero-spice-bg {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-spice-bg::before {
+      content: '🌿';
+      position: absolute;
+      top: 10%;
+      left: 2%;
+      font-size: 3rem;
+      opacity: 0.03;
+      transform: rotate(-20deg);
+      filter: blur(1px);
+    }
+    .hero-spice-bg::after {
+      content: '🌶';
+      position: absolute;
+      bottom: 15%;
+      right: 3%;
+      font-size: 4rem;
+      opacity: 0.03;
+      transform: rotate(15deg);
+      filter: blur(2px);
+    }
+
+    /* ===== HERO GRADIENT WARM ===== */
+    #home {
+      background: linear-gradient(
+        135deg,
+        rgba(253, 251, 247, 1) 0%,
+        rgba(253, 246, 237, 1) 40%,
+        rgba(254, 238, 224, 0.6) 75%,
+        rgba(255, 230, 210, 0.3) 100%
+      ) !important;
+    }
+
+    /* ===== HERO ANIMATIONS: fade-in + slide-up ===== */
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes badgeBounceIn {
+      0%   { opacity: 0; transform: scale(0.7) translateY(10px); }
+      60%  { opacity: 1; transform: scale(1.08) translateY(-4px); }
+      80%  { transform: scale(0.97); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    @keyframes fadeScaleIn {
+      from { opacity: 0; transform: scale(0.92); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    @keyframes floatGentle {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .float-gentle {
+      animation: floatGentle 4s ease-in-out infinite;
+    }
+
+    .hero-badge       { animation: badgeBounceIn  0.7s cubic-bezier(.4,0,.2,1) 0.2s both; }
+    .hero-headline    { animation: fadeSlideUp     0.7s ease-out 0.45s both; }
+    .hero-desc        { animation: fadeSlideUp     0.7s ease-out 0.65s both; }
+    .hero-btn-1       { animation: fadeSlideUp     0.6s ease-out 0.85s both; }
+    .hero-btn-2       { animation: fadeSlideUp     0.6s ease-out 1.05s both; }
+    .hero-trust       { animation: fadeSlideUp     0.6s ease-out 1.2s  both; }
+    .hero-img-main    { animation: fadeScaleIn     0.8s ease-out 0.5s  both; }
+
+    /* Trust badge stagger */
+    .trust-badge:nth-child(1) { animation: fadeSlideUp 0.5s ease-out 1.25s both; }
+    .trust-badge:nth-child(2) { animation: fadeSlideUp 0.5s ease-out 1.40s both; }
+    .trust-badge:nth-child(3) { animation: fadeSlideUp 0.5s ease-out 1.55s both; }
+
+    /* ===== HERO IMAGE HOVER (Removed, handled by Tailwind classes in HTML) ===== */
+
+    /* ===== FLOATING WA BUTTON ===== */
+    @keyframes floatUpDown {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50%       { transform: translateY(-7px) scale(1.02); }
+    }
+    @keyframes waPulseRing {
+      0%   { box-shadow: 0 0 0 0 rgba(34,197,94,0.55); }
+      70%  { box-shadow: 0 0 0 14px rgba(34,197,94,0); }
+      100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+    }
+    .float-wa {
+      animation: floatUpDown 3s ease-in-out infinite, waPulseRing 2.8s ease-out infinite;
+    }
+    .float-wa:hover {
+      animation: none;
+      transform: scale(1.08) translateY(-3px);
+    }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.65s ease-out, transform 0.65s ease-out;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ===== NAV UNDERLINE SMOOTH ===== */
+    .nav-link {
+      position: relative;
+      transition: color 0.25s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -2px;
+      width: 0; height: 2px;
+      background: #2E7D32;
+      border-radius: 9999px;
+      transition: width 0.3s cubic-bezier(.4,0,.2,1);
+    }
+    .nav-link:hover::after,
+    .nav-link.active-nav::after { width: 100%; }
+    .nav-link.active-nav { color: #2E7D32 !important; }
+
+    /* ===== BUTTON HOVER ===== */
+    .btn-primary {
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 30px -6px rgba(46,125,50,0.35);
+    }
+
+    /* ===== PHOTO SHADOW MODERN ===== */
+    .photo-modern {
+      border-radius: 2.5rem;
+      box-shadow: 0 20px 50px -12px rgba(62,39,35,0.18);
+      transition: box-shadow 0.4s ease, transform 0.4s ease;
+    }
+    .photo-modern:hover {
+      box-shadow: 0 30px 60px -15px rgba(62,39,35,0.28);
+    }
+
+    /* ===== FADE-IN TABS ===== */
+    .fade-enter { opacity: 0; transform: translateY(12px); }
+    .fade-enter-active {
+      opacity: 1; transform: translateY(0);
+      transition: opacity 400ms ease-out, transform 400ms ease-out;
+    }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #F8F4EC; }
+    ::-webkit-scrollbar-thumb { background: #A8D5BA; border-radius: 5px; }
+    ::-webkit-scrollbar-thumb:hover { background: #2E7D32; }
+
+    /* ===== PULSE GENTLE (legacy keep) ===== */
+    @keyframes pulse-gentle {
+      0%, 100% { transform: scale(1); box-shadow: 0 4px 20px rgba(34,197,94,0.4); }
+      50%       { transform: scale(1.05); box-shadow: 0 4px 28px rgba(34,197,94,0.6); }
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden selection:bg-sultanSage selection:text-sultanText-dark">
+
+  <!-- ==================== STICKY HEADER & NAVBAR ==================== -->
+  <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-sultanCream/95 backdrop-blur-md border-b border-sultanSage/20 shadow-soft">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 md:h-20 transition-all duration-300">
+        <!-- Logo -->
+        <a href="#home" class="flex items-center group">
+          <img src="img/logo.png" alt="Logo Warung Makan Sultan" class="h-10 sm:h-12 md:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-sm">
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden lg:flex space-x-8">
+          <a href="#home" class="nav-link text-sm font-medium text-sultanText-dark/80 hover:text-sultanGreen transition-colors duration-200 border-b-2 border-transparent hover:border-sultanGreen py-1">Beranda</a>
+          <a href="#keunggulan" class="nav-link text-sm font-medium text-sultanText-dark/80 hover:text-sultanGreen transition-colors duration-200 border-b-2 border-transparent hover:border-sultanGreen py-1">Keunggulan</a>
+          <a href="#menu" class="nav-link text-sm font-medium text-sultanText-dark/80 hover:text-sultanGreen transition-colors duration-200 border-b-2 border-transparent hover:border-sultanGreen py-1">Menu Kami</a>
+          <a href="#tentang" class="nav-link text-sm font-medium text-sultanText-dark/80 hover:text-sultanGreen transition-colors duration-200 border-b-2 border-transparent hover:border-sultanGreen py-1">Tentang Kami</a>
+          <a href="#testimoni" class="nav-link text-sm font-medium text-sultanText-dark/80 hover:text-sultanGreen transition-colors duration-200 border-b-2 border-transparent hover:border-sultanGreen py-1">Testimoni</a>
+          <a href="#lokasi" class="nav-link text-sm font-medium text-sultanText-dark/80 hover:text-sultanGreen transition-colors duration-200 border-b-2 border-transparent hover:border-sultanGreen py-1">Kontak</a>
+        </nav>
+
+        <!-- CTA Button -->
+        <div class="hidden lg:block">
+          <a href="#menu" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-sultanGreen hover:bg-sultanGreen-hover text-white text-sm font-semibold transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg shadow-md">
+            <i class="fa-solid fa-utensils mr-2"></i> Pesan Sekarang
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="lg:hidden">
+          <button id="mobile-menu-btn" aria-label="Buka Menu" class="text-sultanText-dark focus:outline-none p-2 rounded-lg hover:bg-sultanSage/20 transition-colors">
+            <i class="fa-solid fa-bars text-2xl transition-transform duration-300" id="menu-icon"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Overlay Background -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 top-16 md:top-20 bg-black/60 z-[40] hidden transition-opacity duration-300 opacity-0 lg:hidden"></div>
+
+    <!-- Mobile Side Navigation -->
+    <div id="mobile-menu" class="fixed top-16 md:top-20 right-0 h-[calc(100vh-4rem)] md:h-[calc(100vh-5rem)] w-[260px] sm:w-[300px] bg-sultanCream-light shadow-premium z-[45] transform translate-x-full transition-transform duration-300 flex flex-col lg:hidden border-l border-sultanSage/20">
+      <div class="flex flex-col py-4 px-4 overflow-y-auto flex-grow space-y-2">
+        <a href="#home" class="mobile-nav-link block text-base font-medium text-sultanText-dark hover:text-sultanGreen hover:bg-sultanGreen/10 py-3 px-4 rounded-xl border-b border-sultanSage/10 transition-all">Beranda</a>
+        <a href="#keunggulan" class="mobile-nav-link block text-base font-medium text-sultanText-dark hover:text-sultanGreen hover:bg-sultanGreen/10 py-3 px-4 rounded-xl border-b border-sultanSage/10 transition-all">Keunggulan</a>
+        <a href="#menu" class="mobile-nav-link block text-base font-medium text-sultanText-dark hover:text-sultanGreen hover:bg-sultanGreen/10 py-3 px-4 rounded-xl border-b border-sultanSage/10 transition-all">Menu Kami</a>
+        <a href="#tentang" class="mobile-nav-link block text-base font-medium text-sultanText-dark hover:text-sultanGreen hover:bg-sultanGreen/10 py-3 px-4 rounded-xl border-b border-sultanSage/10 transition-all">Tentang Kami</a>
+        <a href="#testimoni" class="mobile-nav-link block text-base font-medium text-sultanText-dark hover:text-sultanGreen hover:bg-sultanGreen/10 py-3 px-4 rounded-xl border-b border-sultanSage/10 transition-all">Testimoni</a>
+        <a href="#lokasi" class="mobile-nav-link block text-base font-medium text-sultanText-dark hover:text-sultanGreen hover:bg-sultanGreen/10 py-3 px-4 rounded-xl border-b border-sultanSage/10 transition-all">Kontak</a>
+      </div>
+      <div class="p-6 border-t border-sultanSage/20 bg-sultanCream-light">
+        <a href="#menu" class="mobile-nav-link flex items-center justify-center w-full px-6 py-3.5 rounded-xl bg-sultanGreen hover:bg-sultanGreen-hover text-white text-sm font-semibold transition-all shadow-md">
+          <i class="fa-solid fa-utensils mr-2"></i> Pesan Sekarang
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section id="home" class="pt-20 md:pt-40 pb-16 md:pb-28 relative overflow-hidden">
+    <!-- Spice / abstract food decorative bg -->
+    <div class="hero-spice-bg"></div>
+
+    <!-- Soft warm blob decorations -->
+    <div class="absolute top-0 right-0 w-[24rem] sm:w-[32rem] h-[24rem] sm:h-[32rem] bg-sultanSage/10 rounded-[40%_60%_70%_30%/40%_50%_60%_50%] blur-3xl -z-10 translate-x-1/4 -translate-y-1/4 animate-[spin_40s_linear_infinite]"></div>
+    <div class="absolute bottom-10 left-0 w-[20rem] sm:w-[28rem] h-[20rem] sm:h-[28rem] rounded-[60%_40%_30%_70%/60%_30%_70%_40%] blur-3xl -z-10 -translate-x-1/4 translate-y-1/4 animate-[spin_50s_linear_infinite_reverse]" style="background:rgba(255,185,130,0.08);"></div>
+    <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-sultanGreen/5 rounded-full blur-3xl -z-10 -translate-x-1/2 -translate-y-1/2"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-8 items-center">
+        <!-- Hero Text -->
+        <div class="md:col-span-6 space-y-5 sm:space-y-6 text-center md:text-left flex flex-col items-center md:items-start">
+          <!-- Badge: bounce-in -->
+          <div class="hero-badge inline-flex items-center space-x-2 px-3 sm:px-4 py-1.5 rounded-full bg-sultanSage/35 border border-sultanSage/60 text-sultanGreen font-bold text-[10px] sm:text-xs tracking-widest uppercase">
+            RASA AUTENTIK NUSANTARA
+          </div>
+
+          <!-- Headline: fade + slide-up -->
+          <h1 class="hero-headline text-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-sultanText-dark leading-[1.25] sm:leading-[1.15] tracking-tight w-full">
+            Warung Makan <br class="hidden sm:inline">
+            <span class="text-sultanGreen relative inline-block">
+              Sultan, Enak
+              <svg class="absolute left-0 -bottom-1 sm:-bottom-2 w-full h-2 sm:h-3 text-sultanSage-dark/50" viewBox="0 0 100 10" preserveAspectRatio="none">
+                <path d="M0,5 Q50,10 100,5" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round"></path>
+              </svg>
+            </span> <br>
+            &amp; Terjangkau
+          </h1>
+
+          <!-- Description -->
+          <p class="hero-desc text-sultanText-muted text-sm sm:text-lg max-w-lg mx-auto lg:mx-0 leading-relaxed font-light">
+            Menyajikan cita rasa autentik khas Nusantara dengan bahan segar pilihan setiap hari. Bersih, higienis, dan dimasak hangat khusus untuk santap harian keluarga Anda.
+          </p>
+
+          <!-- Buttons: staggered appear -->
+          <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-3 sm:gap-4 pt-3 sm:pt-2 w-full max-w-sm sm:max-w-none">
+            <a href="#menu" class="w-full sm:w-auto hero-btn-1 inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl bg-sultanGreen hover:bg-sultanGreen-hover text-white font-semibold btn-primary shadow-md text-sm sm:text-base">
+              <i class="fa-solid fa-list-ul mr-2 sm:mr-2.5"></i> Lihat Menu Kami
+            </a>
+            <a href="https://wa.me/6281325988251?text=Halo%20Warung%20Makan%20Sultan,%20saya%20ingin%20memesan%20makanan..." target="_blank" class="w-full sm:w-auto hero-btn-2 inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl bg-white hover:bg-sultanSage-light text-sultanGreen border-2 border-sultanGreen font-semibold btn-primary text-sm sm:text-base">
+              <i class="fa-brands fa-whatsapp mr-2 sm:mr-2.5 text-lg sm:text-xl"></i> Pesan via WhatsApp
+            </a>
+          </div>
+
+          <!-- Trust Badges: stagger one-by-one -->
+          <div class="hero-trust flex justify-around md:justify-start gap-x-3 sm:gap-x-8 pt-6 sm:pt-8 text-xs md:text-sm text-sultanText-dark border-t border-sultanSage/20 w-full">
+            <div class="trust-badge flex flex-col items-center space-y-2">
+              <i class="fa-solid fa-certificate text-sultanGreen text-2xl sm:text-3xl"></i>
+              <span class="font-medium text-center leading-tight">Halal</span>
+            </div>
+            <div class="trust-badge flex flex-col items-center space-y-2">
+              <i class="fa-solid fa-leaf text-sultanGreen text-2xl sm:text-3xl"></i>
+              <span class="font-medium text-center leading-tight">Fresh<br>Ingredients</span>
+            </div>
+            <div class="trust-badge flex flex-col items-center space-y-2">
+              <i class="fa-solid fa-shield-halved text-sultanGreen text-2xl sm:text-3xl"></i>
+              <span class="font-medium text-center leading-tight">No<br>Preservatives</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Images Layout -->
+        <div class="md:col-span-6 relative flex justify-center mt-12 sm:mt-16 md:mt-0">
+          <div class="relative w-full max-w-[360px] sm:max-w-[460px] lg:max-w-[500px] aspect-[4/3] sm:aspect-square flex items-center justify-center p-4">
+            
+            <!-- Rotating dashed ring background -->
+            <div class="absolute inset-4 sm:inset-6 rounded-full bg-sultanSage/15 -z-10 border-2 border-dashed border-sultanGreen/25 animate-[spin_60s_linear_infinite]"></div>
+
+            <!-- Gambar Utama Warung -->
+            <div class="hero-img-main w-full h-full z-10 flex items-center justify-center">
+              <div class="float-gentle w-[90%] h-[90%] sm:w-[85%] sm:h-[85%]">
+                <!-- Border/Outline lembut warna hijau/cream dengan ring, rounded soft, premium shadow, hover effects -->
+                <div class="w-full h-full rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden border-[6px] sm:border-[8px] border-white ring-4 ring-sultanSage/40 shadow-premium transition-all duration-500 hover:shadow-[0_30px_60px_-15px_rgba(46,125,50,0.4)] hover:scale-[1.02] group bg-sultanCream relative">
+                  <!-- Overlay gradient lembut (opsional untuk warmth) -->
+                  <div class="absolute inset-0 bg-gradient-to-tr from-sultanGreen/10 to-transparent z-10 pointer-events-none mix-blend-overlay"></div>
+                  <img src="img/img1.jpg" alt="Warung Makan Sultan" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 relative z-0">
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== WHY CHOOSE US ==================== -->
+  <section id="keunggulan" class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Section Title -->
+      <div class="reveal text-center max-w-3xl mx-auto mb-12 md:mb-16 space-y-3 md:space-y-4">
+        <h2 class="text-xs font-bold tracking-widest text-sultanGreen uppercase"><i class="fa-solid fa-star mr-1"></i> Keutamaan Kami</h2>
+        <p class="text-title text-3xl sm:text-4xl font-extrabold text-sultanText-dark">Kenapa Warung Makan Sultan Begitu Istimewa?</p>
+        <p class="text-sultanText-muted text-sm sm:text-base leading-relaxed">Kami mendedikasikan waktu, cinta, dan bahan terbaik untuk menyajikan masakan berkualitas sultan setiap hari ke piring Anda.</p>
+      </div>
+
+      <!-- Grid of Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <!-- Card 1 -->
+        <div class="reveal reveal-delay-1 group p-6 md:p-8 rounded-3xl bg-sultanCream-light border border-sultanSage/10 hover:border-sultanSage/40 hover:bg-sultanCream hover:shadow-soft-lg transition-all duration-300 transform hover:-translate-y-2">
+          <div class="w-12 h-12 md:w-14 md:h-14 bg-sultanGreen/10 group-hover:bg-sultanGreen text-sultanGreen group-hover:text-white rounded-2xl flex items-center justify-center mb-5 md:mb-6 transition-colors duration-300 shadow-sm">
+            <i class="fa-solid fa-mortar-pestle text-xl md:text-2xl"></i>
+          </div>
+          <h3 class="text-base md:text-lg font-bold text-sultanText-dark mb-2 md:mb-3">Bumbu Rempah Asli</h3>
+          <p class="text-sultanText-muted text-sm leading-relaxed">Diracik menggunakan rempah murni tradisional Indonesia yang segar, diulek langsung tanpa bahan pengawet atau pewarna buatan.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="reveal reveal-delay-2 group p-6 md:p-8 rounded-3xl bg-sultanCream-light border border-sultanSage/10 hover:border-sultanSage/40 hover:bg-sultanCream hover:shadow-soft-lg transition-all duration-300 transform hover:-translate-y-2">
+          <div class="w-12 h-12 md:w-14 md:h-14 bg-sultanGreen/10 group-hover:bg-sultanGreen text-sultanGreen group-hover:text-white rounded-2xl flex items-center justify-center mb-5 md:mb-6 transition-colors duration-300 shadow-sm">
+            <i class="fa-solid fa-carrot text-xl md:text-2xl"></i>
+          </div>
+          <h3 class="text-base md:text-lg font-bold text-sultanText-dark mb-2 md:mb-3">Bahan Segar Setiap Hari</h3>
+          <p class="text-sultanText-muted text-sm leading-relaxed">Bahan utama seperti sayur, daging, dan bumbu dibeli dari pasar lokal setiap pagi hari untuk memastikan kualitas kesegaran hidangan.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="reveal reveal-delay-3 group p-6 md:p-8 rounded-3xl bg-sultanCream-light border border-sultanSage/10 hover:border-sultanSage/40 hover:bg-sultanCream hover:shadow-soft-lg transition-all duration-300 transform hover:-translate-y-2">
+          <div class="w-12 h-12 md:w-14 md:h-14 bg-sultanGreen/10 group-hover:bg-sultanGreen text-sultanGreen group-hover:text-white rounded-2xl flex items-center justify-center mb-5 md:mb-6 transition-colors duration-300 shadow-sm">
+            <i class="fa-solid fa-tags text-xl md:text-2xl"></i>
+          </div>
+          <h3 class="text-base md:text-lg font-bold text-sultanText-dark mb-2 md:mb-3">Harga Terjangkau</h3>
+          <p class="text-sultanText-muted text-sm leading-relaxed">Nikmatnya kelezatan masakan ala Sultan namun bersahabat dengan dompet. Sangat pas untuk menu santap siang maupun malam harian.</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="reveal reveal-delay-4 group p-6 md:p-8 rounded-3xl bg-sultanCream-light border border-sultanSage/10 hover:border-sultanSage/40 hover:bg-sultanCream hover:shadow-soft-lg transition-all duration-300 transform hover:-translate-y-2">
+          <div class="w-12 h-12 md:w-14 md:h-14 bg-sultanGreen/10 group-hover:bg-sultanGreen text-sultanGreen group-hover:text-white rounded-2xl flex items-center justify-center mb-5 md:mb-6 transition-colors duration-300 shadow-sm">
+            <i class="fa-solid fa-leaf text-xl md:text-2xl"></i>
+          </div>
+          <h3 class="text-base md:text-lg font-bold text-sultanText-dark mb-2 md:mb-3">Tempat Bersih &amp; Nyaman</h3>
+          <p class="text-sultanText-muted text-sm leading-relaxed">Kenyamanan pelanggan adalah utama. Seluruh area makan dan proses memasak dipastikan higienis demi kesehatan keluarga Anda.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MENU SECTION ==================== -->
+  <section id="menu" class="py-16 md:py-24 bg-sultanCream-light relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Title -->
+      <div class="text-center max-w-3xl mx-auto mb-10 md:mb-12 space-y-3 md:space-y-4">
+        <h2 class="text-xs font-bold tracking-widest text-sultanGreen uppercase"><i class="fa-solid fa-bowl-food mr-1"></i> Pilihan Menu</h2>
+        <p class="text-title text-3xl sm:text-4xl font-extrabold text-sultanText-dark">Menu Best Seller & Pilihan Favorit</p>
+        <p class="text-sultanText-muted text-sm sm:text-base leading-relaxed">Nikmati hidangan andalan kami yang paling digemari pelanggan. Rasakan kelezatan rempah Nusantara di setiap gigitannya.</p>
+      </div>
+
+      <!-- Menu Best Seller Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-12 md:mb-16">
+        <!-- Card 1 -->
+        <div class="reveal reveal-delay-1 bg-white rounded-3xl overflow-hidden shadow-soft border border-sultanSage/10 hover:shadow-soft-lg transition-all duration-300 flex flex-col justify-between group">
+          <div class="relative overflow-hidden aspect-[4/3] bg-sultanSage/20">
+            <span class="absolute top-4 left-4 z-10 inline-flex items-center px-3 py-1 rounded-full bg-sultanGreen text-white text-[10px] font-bold uppercase tracking-wider shadow-md">
+              <i class="fa-solid fa-fire mr-1 text-xs"></i> Favorit
+            </span>
+            <img src="img/kentang_balado.jpg" alt="Kentang Balado" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          </div>
+
+          <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+            <div class="space-y-2">
+              <h3 class="font-bold text-base text-sultanText-dark group-hover:text-sultanGreen transition-colors duration-200">Kentang Balado</h3>
+              <p class="text-xs text-sultanText-muted leading-relaxed line-clamp-3">Kentang Balado dengan cita rasa santan gurih dan rempah pilihan yang autentik.</p>
+            </div>
+
+            <div class="pt-4 border-t border-sultanSage/10 flex items-center justify-between">
+              <div>
+                <span class="block text-[10px] text-sultanText-muted uppercase tracking-wide">Harga</span>
+                <span class="font-bold text-base text-sultanGreen">Rp 5.000</span>
+              </div>
+              <a href="https://wa.me/6281325988251?text=Halo%20Warung%20Makan%20Sultan,%20saya%20ingin%20memesan%20menu%20*Nasi%20Sultan%20Lengkap*%20sebanyak%201%20porsi..." target="_blank" class="w-10 h-10 rounded-full bg-sultanSage/25 hover:bg-sultanGreen hover:text-white text-sultanGreen flex items-center justify-center transition-all duration-300 transform active:scale-90 hover:shadow-md" title="Pesan via WhatsApp">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="reveal reveal-delay-2 bg-white rounded-3xl overflow-hidden shadow-soft border border-sultanSage/10 hover:shadow-soft-lg transition-all duration-300 flex flex-col justify-between group">
+          <div class="relative overflow-hidden aspect-[4/3] bg-sultanSage/20">
+            <span class="absolute top-4 left-4 z-10 inline-flex items-center px-3 py-1 rounded-full bg-sultanGreen text-white text-[10px] font-bold uppercase tracking-wider shadow-md">
+              <i class="fa-solid fa-fire mr-1 text-xs"></i> Favorit
+            </span>
+            <img src="img/sayur_kangkung.jpg" alt="Sayur Kangkung" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          </div>
+          <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+            <div class="space-y-2">
+              <h3 class="font-bold text-base text-sultanText-dark group-hover:text-sultanGreen transition-colors duration-200">Sayur Kangkung</h3>
+              <p class="text-xs text-sultanText-muted leading-relaxed line-clamp-3">Sayur kangkung segar dengan bumbu rempah pilihan yang autentik.</p>
+            </div>
+            <div class="pt-4 border-t border-sultanSage/10 flex items-center justify-between">
+              <div>
+                <span class="block text-[10px] text-sultanText-muted uppercase tracking-wide">Harga</span>
+                <span class="font-bold text-base text-sultanGreen">Rp 25.000</span>
+              </div>
+              <a href="https://wa.me/6281325988251?text=Halo%20Warung%20Makan%20Sultan,%20saya%20ingin%20memesan%20menu%20*Rendang%20Daging%20Sapi*%20sebanyak%201%20porsi..." target="_blank" class="w-10 h-10 rounded-full bg-sultanSage/25 hover:bg-sultanGreen hover:text-white text-sultanGreen flex items-center justify-center transition-all duration-300 transform active:scale-90 hover:shadow-md" title="Pesan via WhatsApp">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="reveal reveal-delay-3 bg-white rounded-3xl overflow-hidden shadow-soft border border-sultanSage/10 hover:shadow-soft-lg transition-all duration-300 flex flex-col justify-between group">
+          <div class="relative overflow-hidden aspect-[4/3] bg-sultanSage/20">
+            <span class="absolute top-4 left-4 z-10 inline-flex items-center px-3 py-1 rounded-full bg-sultanGreen text-white text-[10px] font-bold uppercase tracking-wider shadow-md">
+              <i class="fa-solid fa-fire mr-1 text-xs"></i> Favorit
+            </span>
+            <img src="img/orek_tempe.jpg" alt="Orek Tempe" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          </div>
+          <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+            <div class="space-y-2">
+              <h3 class="font-bold text-base text-sultanText-dark group-hover:text-sultanGreen transition-colors duration-200">Orek Tempe</h3>
+              <p class="text-xs text-sultanText-muted leading-relaxed line-clamp-3">Orek tempe dengan bumbu rempah pilihan yang autentik.</p>
+            </div>
+            <div class="pt-4 border-t border-sultanSage/10 flex items-center justify-between">
+              <div>
+                <span class="block text-[10px] text-sultanText-muted uppercase tracking-wide">Harga</span>
+                <span class="font-bold text-base text-sultanGreen">Rp 5.000</span>
+              </div>
+              <a href="https://wa.me/6281325988251?text=Halo%20Warung%20Makan%20Sultan,%20saya%20ingin%20memesan%20menu%20*Ayam%20Bakar%20Taliwang*%20sebanyak%201%20porsi..." target="_blank" class="w-10 h-10 rounded-full bg-sultanSage/25 hover:bg-sultanGreen hover:text-white text-sultanGreen flex items-center justify-center transition-all duration-300 transform active:scale-90 hover:shadow-md" title="Pesan via WhatsApp">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Card 4 -->
+        <div class="reveal reveal-delay-4 bg-white rounded-3xl overflow-hidden shadow-soft border border-sultanSage/10 hover:shadow-soft-lg transition-all duration-300 flex flex-col justify-between group">
+          <div class="relative overflow-hidden aspect-[4/3] bg-sultanSage/20">
+            <span class="absolute top-4 left-4 z-10 inline-flex items-center px-3 py-1 rounded-full bg-sultanGreen text-white text-[10px] font-bold uppercase tracking-wider shadow-md">
+              <i class="fa-solid fa-fire mr-1 text-xs"></i> Favorit
+            </span>
+            <img src="img/telor_balado.jpg" alt="Telor Bulat Balado" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          </div>
+          <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+            <div class="space-y-2">
+              <h3 class="font-bold text-base text-sultanText-dark group-hover:text-sultanGreen transition-colors duration-200">Telor Bulat Balado</h3>
+              <p class="text-xs text-sultanText-muted leading-relaxed line-clamp-3">Telor bulat yang dimasak dengan bumbu balado yang autentik.</p>
+            </div>
+            <div class="pt-4 border-t border-sultanSage/10 flex items-center justify-between">
+              <div>
+                <span class="block text-[10px] text-sultanText-muted uppercase tracking-wide">Harga</span>
+                <span class="font-bold text-base text-sultanGreen">Rp 5.000</span>
+              </div>
+              <a href="https://wa.me/6281325988251?text=Halo%20Warung%20Makan%20Sultan,%20saya%20ingin%20memesan%20menu%20*Telor%20Bulat%20Balado*%20sebanyak%201%20porsi..." target="_blank" class="w-10 h-10 rounded-full bg-sultanSage/25 hover:bg-sultanGreen hover:text-white text-sultanGreen flex items-center justify-center transition-all duration-300 transform active:scale-90 hover:shadow-md" title="Pesan via WhatsApp">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Banner Daftar Menu & Daftar Harga Lengkap -->
+      <div class="reveal bg-white rounded-3xl md:rounded-[2.5rem] p-6 md:p-12 shadow-soft-lg border-2 border-sultanSage/20 relative overflow-hidden flex flex-col md:flex-row items-center gap-8 lg:gap-12 group">
+        <!-- Decorative bg -->
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-sultanSage/20 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-sultanGreen/5 rounded-full blur-3xl -z-10"></div>
+        
+        <!-- Spanduk/Menu Image -->
+        <div class="w-full md:w-1/2 relative">
+          <!-- Lightbox trigger -->
+          <label for="menu-modal" class="cursor-pointer block relative rounded-2xl overflow-hidden shadow-md border-4 border-sultanCream hover:shadow-premium transition-shadow duration-300 transform hover:-translate-y-1 group-hover:border-sultanSage/50">
+            <img src="img/daftar_menu.jpg" alt="Daftar Menu Warung Makan Sultan" class="w-full h-auto object-cover aspect-[4/3] sm:aspect-video md:aspect-[4/3] lg:aspect-video transition-transform duration-500 group-hover:scale-105">
+            <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span class="bg-sultanGreen text-white px-6 py-3 rounded-full font-semibold shadow-lg backdrop-blur-sm bg-opacity-90 flex items-center gap-2">
+                <i class="fa-solid fa-magnifying-glass-plus"></i> Perbesar Daftar Harga
+              </span>
+            </div>
+          </label>
+        </div>
+
+        <!-- Text/CTA -->
+        <div class="w-full md:w-1/2 space-y-6 text-center md:text-left">
+          <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-sultanSage/35 border border-sultanSage/60 text-sultanGreen font-semibold text-xs tracking-wider uppercase">
+            <i class="fa-solid fa-clipboard-list mr-1"></i> Tersedia 25+ Menu
+          </div>
+          <h3 class="text-title text-3xl sm:text-4xl font-extrabold text-sultanText-dark leading-tight">
+            Daftar Menu & <br class="hidden lg:block"/> Harga Lengkap
+          </h3>
+          <p class="text-sultanText-muted text-base leading-relaxed">
+            Menyediakan aneka lauk-pauk, sayuran segar, dan minuman khas dengan harga transparan dan terjangkau. Pilihan tepat untuk santapan harian keluarga, baik untuk makan di tempat maupun dibawa pulang.
+          </p>
+          <div class="pt-4">
+            <label for="menu-modal" class="cursor-pointer inline-flex items-center justify-center px-8 py-4 rounded-2xl bg-sultanGreen hover:bg-sultanGreen-hover text-white font-semibold transition-all duration-300 transform hover:-translate-y-1 hover:shadow-premium shadow-md">
+              <i class="fa-solid fa-expand mr-2.5"></i> Lihat Daftar Harga Jelas
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Lightbox Modal (CSS-based, hidden checkbox state) -->
+    <input type="checkbox" id="menu-modal" class="peer hidden">
+    <div class="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm hidden peer-checked:flex items-center justify-center p-4 sm:p-6 opacity-0 peer-checked:opacity-100 transition-opacity duration-300">
+      <label for="menu-modal" class="absolute inset-0 cursor-pointer"></label>
+      <div class="relative w-full max-w-4xl max-h-[90vh] bg-white rounded-2xl overflow-hidden shadow-2xl flex flex-col z-10">
+        <div class="p-4 bg-sultanText-dark text-white flex justify-between items-center border-b border-gray-700">
+          <h4 class="font-semibold tracking-wide">Daftar Menu & Harga Lengkap</h4>
+          <label for="menu-modal" class="cursor-pointer w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors">
+            <i class="fa-solid fa-xmark text-lg"></i>
+          </label>
+        </div>
+        <div class="flex-grow overflow-auto p-2 bg-sultanCream-light">
+          <!-- Gambar besar / jelas dari menu harga -->
+          <img src="img/daftar_menu.jpg" alt="Daftar Menu Warung Makan Sultan" class="w-full h-auto object-contain">
+        </div>
+      </div>
+    </div>
+
+
+  </section>
+
+  <!-- ==================== ABOUT US SECTION ==================== -->
+  <section id="tentang" class="py-16 md:py-24 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-16 items-center">
+        
+        <!-- Left Side: Image with Stats Overlay -->
+        <div class="reveal md:col-span-5 relative flex justify-center">
+          <div class="relative w-full max-w-md aspect-[4/5]">
+            <!-- Decorative outline border -->
+            <div class="absolute -inset-4 rounded-[2.5rem] border-2 border-sultanGreen/35 -z-10 translate-x-3 translate-y-3"></div>
+            <!-- Main About Us Image -->
+            <div class="w-full h-full rounded-[2.5rem] overflow-hidden shadow-premium">
+              <img src="/img/tentang_kami.jpg" alt="Proses Dapur Warung Makan Sultan" class="w-full h-full object-cover">
+            </div>
+            <!-- Absolute Stat card -->
+            <div class="absolute bottom-8 -right-6 bg-white px-6 py-5 rounded-2xl shadow-premium border border-sultanSage/20 flex flex-col items-center text-center">
+              <span class="text-3xl font-extrabold text-sultanGreen">100%</span>
+              <span class="text-xs text-sultanText-muted tracking-wide font-medium">Bahan Halal &amp; Higienis</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side: Content Details -->
+        <div class="reveal reveal-delay-2 md:col-span-7 space-y-6">
+          <div class="space-y-2">
+            <h2 class="text-xs font-bold tracking-widest text-sultanGreen uppercase"><i class="fa-solid fa-heart mr-1"></i> Tentang Kami</h2>
+            <p class="text-title text-3xl sm:text-4xl font-extrabold text-sultanText-dark">Dedikasi Rasa Autentik Khas Nusantara</p>
+          </div>
+          
+          <p class="text-sultanText-muted text-sm sm:text-base leading-relaxed font-light">
+            Warung Makan Sultan didirikan dari kecintaan kami terhadap masakan rumahan tradisional Indonesia yang kaya rempah dan sarat akan rasa kekeluargaan. Kami percaya bahwa menyantap hidangan lezat dan bernutrisi tidaklah harus mahal.
+          </p>
+
+          <p class="text-sultanText-muted text-sm sm:text-base leading-relaxed font-light">
+            Setiap hidangan diracik oleh juru masak kami yang terampil dengan resep turun-temurun rahasia, menggunakan bumbu mentah berkualitas yang kami ulek segar. Dari olahan ayam, ikan goreng, hingga tumis sayur segar, kami menghadirkan rasa hangat dan kenyamanan seperti makan di rumah ibu sendiri.
+          </p>
+
+          <!-- Quick Stats Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6 border-t border-sultanSage/20 text-center md:text-left">
+            <div>
+              <span class="block text-3xl font-bold text-sultanText-dark">2025</span>
+              <span class="text-xs text-sultanText-muted">Berdiri Sejak</span>
+            </div>
+            <div>
+              <span class="block text-3xl font-bold text-sultanText-dark">31+</span>
+              <span class="text-xs text-sultanText-muted">Menu Varian</span>
+            </div>
+            <!-- <div>
+              <span class="block text-3xl font-bold text-sultanText-dark">9</span>
+              <span class="text-xs text-sultanText-muted">Resep Rahasia</span>
+            </div> -->
+            <div>
+              <span class="block text-3xl font-bold text-sultanText-dark">100K+</span>
+              <span class="text-xs text-sultanText-muted">Pelanggan Puas</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TESTIMONI SECTION ==================== -->
+  <section id="testimoni" class="py-16 md:py-24 bg-sultanCream-light">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Title -->
+      <div class="reveal text-center max-w-3xl mx-auto mb-12 md:mb-16 space-y-3 md:space-y-4">
+        <h2 class="text-xs font-bold tracking-widest text-sultanGreen uppercase"><i class="fa-solid fa-comment-dots mr-1"></i> Testimoni</h2>
+        <p class="text-title text-3xl sm:text-4xl font-extrabold text-sultanText-dark">Apa Kata Pelanggan Setia Kami?</p>
+        <p class="text-sultanText-muted text-sm sm:text-base leading-relaxed">Kepuasan Anda adalah kebahagiaan terbesar kami. Berikut beberapa ulasan jujur dari para pelanggan setia Warung Makan Sultan.</p>
+      </div>
+
+      <!-- Testimonials Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        
+        <!-- Testimoni Card 1 -->
+        <div class="reveal reveal-delay-1 bg-white p-6 md:p-8 rounded-3xl shadow-soft border border-sultanSage/10 flex flex-col justify-between hover:shadow-soft-lg transition-shadow duration-300">
+          <div class="space-y-4">
+            <!-- Stars -->
+            <div class="flex text-amber-400 text-sm">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <!-- Quote Text -->
+            <p class="text-sultanText text-sm leading-relaxed italic">
+              "Masakan enak, sedeeeep... Tempat bersih, Tempat parkir ada, Banyak menu pilihan"
+            </p>
+          </div>
+          <!-- User Profile -->
+          <div class="flex items-center space-x-4 pt-5 md:pt-6 mt-5 md:mt-6 border-t border-sultanSage/15">
+            <div class="w-12 h-12 rounded-full overflow-hidden bg-sultanSage/30 flex items-center justify-center text-sultanGreen font-bold">
+              IA
+            </div>
+            <div>
+              <span class="block text-sm font-bold text-sultanText-dark">Imam Anas</span>
+              <span class="block text-xs text-sultanText-muted"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimoni Card 2 -->
+        <div class="reveal reveal-delay-2 bg-white p-6 md:p-8 rounded-3xl shadow-soft border border-sultanSage/10 flex flex-col justify-between hover:shadow-soft-lg transition-shadow duration-300">
+          <div class="space-y-4">
+            <!-- Stars -->
+            <div class="flex text-amber-400 text-sm">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <!-- Quote Text -->
+            <p class="text-sultanText text-sm leading-relaxed italic">
+              Warung Sultan salah satu tempat makan yang wajib dicoba. Pilihan lauknya lengkap, mulai dari ayam, ikan, telur sampai berbagai macam sayuran. Rasanya enak, bumbunya meresap, dan harganya sangat terjangkau. Tempatnya juga bersih dan pelayanannya ramah. Cocok untuk makan siang maupun makan malam. Pasti akan kembali lagi.
+            </p>
+          </div>
+          <!-- User Profile -->
+          <div class="flex items-center space-x-4 pt-5 md:pt-6 mt-5 md:mt-6 border-t border-sultanSage/15">
+            <div class="w-12 h-12 rounded-full overflow-hidden bg-sultanSage/30 flex items-center justify-center text-sultanGreen font-bold">
+              AF
+            </div>
+            <div>
+              <span class="block text-sm font-bold text-sultanText-dark">Alif Fauzan</span>
+              <span class="block text-xs text-sultanText-muted"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimoni Card 3 -->
+        <div class="reveal reveal-delay-3 bg-white p-6 md:p-8 rounded-3xl shadow-soft border border-sultanSage/10 flex flex-col justify-between hover:shadow-soft-lg transition-shadow duration-300">
+          <div class="space-y-4">
+            <!-- Stars -->
+            <div class="flex text-amber-400 text-sm">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <!-- Quote Text -->
+            <p class="text-sultanText text-sm leading-relaxed italic">
+              "Nasi Sultan Lengkap porsinya juara banget! Lauknya melimpah, rasa sambal bajaknya mantap pedas gurih. Sangat cocok buat anak kost kayak saya yang butuh makan enak berkualitas tapi ramah anggaran."
+            </p>
+          </div>
+          <!-- User Profile -->
+          <div class="flex items-center space-x-4 pt-5 md:pt-6 mt-5 md:mt-6 border-t border-sultanSage/15">
+            <div class="w-12 h-12 rounded-full overflow-hidden bg-sultanSage/30 flex items-center justify-center text-sultanGreen font-bold">
+              DW
+            </div>
+            <div>
+              <span class="block text-sm font-bold text-sultanText-dark">David Wijaya</span>
+              <span class="block text-xs text-sultanText-muted">Mahasiswa</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== LOKASI & KONTAK SECTION ==================== -->
+  <section id="lokasi" class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="reveal text-center max-w-3xl mx-auto mb-12 md:mb-16 space-y-3 md:space-y-4">
+        <h2 class="text-xs font-bold tracking-widest text-sultanGreen uppercase"><i class="fa-solid fa-location-dot mr-1"></i> Kontak &amp; Lokasi</h2>
+        <p class="text-title text-3xl sm:text-4xl font-extrabold text-sultanText-dark">Kunjungi Kami &amp; Jalin Kontak</p>
+        <p class="text-sultanText-muted text-sm sm:text-base leading-relaxed">Kami siap melayani kedatangan Anda maupun pesanan daring dengan layanan terbaik ramah khas Indonesia.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+        <!-- Contact Details -->
+        <div class="reveal md:col-span-5 flex flex-col justify-between space-y-6 md:space-y-8 bg-sultanCream/50 p-6 md:p-8 rounded-3xl border border-sultanSage/20 shadow-soft">
+          <div class="space-y-6">
+            <!-- Jam Buka -->
+            <div class="flex items-start space-x-4">
+              <div class="w-10 h-10 bg-sultanGreen/10 rounded-xl flex items-center justify-center text-sultanGreen text-lg flex-shrink-0">
+                <i class="fa-solid fa-clock"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-sultanText-dark text-base">Jam Operasional</h3>
+                <p class="text-sultanText-muted text-sm mt-1">Buka Setiap Hari<br>06.00 - 17.00 WIB</p>
+              </div>
+            </div>
+
+            <!-- Alamat -->
+            <div class="flex items-start space-x-4">
+              <div class="w-10 h-10 bg-sultanGreen/10 rounded-xl flex items-center justify-center text-sultanGreen text-lg flex-shrink-0">
+                <i class="fa-solid fa-map-location-dot"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-sultanText-dark text-base">Alamat</h3>
+                <p class="text-sultanText-muted text-sm mt-1">Jl. Raya Jatilawang No. KM 40, Tunjung Wetan, Tunjung, Kec. Jatilawang, Kabupaten Banyumas, Jawa Tengah 53174, Indonesia</p>
+              </div>
+            </div>
+
+            <!-- Telepon & Email -->
+            <div class="flex items-start space-x-4">
+              <div class="w-10 h-10 bg-sultanGreen/10 rounded-xl flex items-center justify-center text-sultanGreen text-lg flex-shrink-0">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-sultanText-dark text-base">Hubungi Kami</h3>
+                <p class="text-sultanText-muted text-sm mt-1">WhatsApp: +62 852-2960-8785<br></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social links -->
+          <div class="pt-6 border-t border-sultanSage/25 space-y-4">
+            <h4 class="text-xs font-semibold uppercase tracking-wider text-sultanText-dark/65">Ikuti Media Sosial</h4>
+            <div class="flex space-x-3">
+              <a href="#" class="w-10 h-10 bg-white border border-sultanSage/30 rounded-xl flex items-center justify-center text-sultanText-dark hover:bg-sultanGreen hover:text-white transition-colors shadow-sm">
+                <i class="fa-brands fa-instagram text-lg"></i>
+              </a>
+              <a href="#" class="w-10 h-10 bg-white border border-sultanSage/30 rounded-xl flex items-center justify-center text-sultanText-dark hover:bg-sultanGreen hover:text-white transition-colors shadow-sm">
+                <i class="fa-brands fa-facebook-f text-lg"></i>
+              </a>
+              <a href="#" class="w-10 h-10 bg-white border border-sultanSage/30 rounded-xl flex items-center justify-center text-sultanText-dark hover:bg-sultanGreen hover:text-white transition-colors shadow-sm">
+                <i class="fa-brands fa-tiktok text-lg"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      <div class="md:col-span-7 min-h-[350px] w-full rounded-3xl overflow-hidden shadow-soft border border-sultanSage/20 relative">
+  <!-- Google Maps Embed Iframe -->
+  <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.7725203362086!2d109.121663674841!3d-7.535687392477755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6569007193610b%3A0xe22afd0bcb0711dc!2sWarung%20Makan%20Sultan!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
+    class="absolute inset-0 w-full h-full border-0" 
+    allowfullscreen="" 
+    loading="lazy" 
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-sultanText-dark text-sultanCream-light pt-12 md:pt-16 pb-8 border-t border-sultanSage/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 pb-12 border-b border-sultanCream/10">
+        
+        <!-- Brand Info -->
+        <div class="md:col-span-5 space-y-4">
+          <a href="#home" class="flex items-center space-x-2">
+            <div class="w-9 h-9 bg-sultanGreen rounded-xl flex items-center justify-center text-white shadow-md">
+              <i class="fa-solid fa-crown text-base"></i>
+            </div>
+            <span class="text-xl font-bold tracking-tight text-white">Warung Makan Sultan</span>
+          </a>
+          <p class="text-sultanCream/60 text-xs sm:text-sm leading-relaxed max-w-sm">
+            Menyajikan masakan rumahan Nusantara dengan standar rasa sultan dan higienitas prima, namun dengan harga yang merakyat bagi keluarga tercinta.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="md:col-span-3 space-y-4">
+          <h4 class="text-sm font-semibold tracking-wider uppercase text-sultanSage">Tautan Cepat</h4>
+          <ul class="space-y-2 text-xs sm:text-sm">
+            <li><a href="#home" class="text-sultanCream/60 hover:text-white transition-colors"><i class="fa-solid fa-chevron-right mr-1.5 text-[10px]"></i> Beranda</a></li>
+            <li><a href="#keunggulan" class="text-sultanCream/60 hover:text-white transition-colors"><i class="fa-solid fa-chevron-right mr-1.5 text-[10px]"></i> Keunggulan</a></li>
+            <li><a href="#menu" class="text-sultanCream/60 hover:text-white transition-colors"><i class="fa-solid fa-chevron-right mr-1.5 text-[10px]"></i> Menu Kami</a></li>
+            <li><a href="#tentang" class="text-sultanCream/60 hover:text-white transition-colors"><i class="fa-solid fa-chevron-right mr-1.5 text-[10px]"></i> Tentang Kami</a></li>
+            <li><a href="#lokasi" class="text-sultanCream/60 hover:text-white transition-colors"><i class="fa-solid fa-chevron-right mr-1.5 text-[10px]"></i> Kontak &amp; Lokasi</a></li>
+          </ul>
+        </div>
+
+        <!-- Working Hours info -->
+        <div class="md:col-span-4 space-y-4">
+          <h4 class="text-sm font-semibold tracking-wider uppercase text-sultanSage">Layanan Pesanan</h4>
+          <p class="text-sultanCream/60 text-xs sm:text-sm leading-relaxed">
+            Menerima pesanan katering harian, nasi kotak acara syukuran, prasmanan kantor, dan pengantaran langsung ke rumah via layanan WhatsApp.
+          </p>
+          <a href="https://wa.me/6281325988251?text=Halo%20Warung%20Makan%20Sultan,%20saya%20ingin%20memesan%20makanan..." target="_blank" class="inline-flex items-center px-4 py-2 rounded-xl bg-sultanGreen text-white text-xs font-semibold hover:bg-sultanGreen-hover transition-colors shadow-md">
+            <i class="fa-brands fa-whatsapp mr-2 text-sm"></i> Admin Katering / CS
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Copyright -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-sultanCream/40 space-y-4 sm:space-y-0">
+        <p>&copy; 2026 Warung Makan Sultan. Hak cipta dilindungi undang-undang.</p>
+        <p>Dirancang untuk Cita Rasa Nusantara Terlengkap</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== FLOATING WHATSAPP BUTTON ==================== -->
+  <a href="https://wa.me/6281325988251?text=Halo%20Warung%20Makan%20Sultan,%20saya%20ingin%20memesan%20makanan..." 
+     target="_blank" 
+     class="float-wa fixed bottom-5 right-5 sm:bottom-8 sm:right-8 z-[60] flex items-center bg-[#25D366] hover:bg-[#1DA851] text-white p-3.5 sm:p-4 rounded-full shadow-[0_4px_15px_rgba(37,211,102,0.4)] transition-all duration-300 hover:scale-110">
+    <i class="fa-brands fa-whatsapp text-3xl sm:text-4xl"></i>
+  </a>
+
+  <!-- ==================== VANILLA JAVASCRIPT ==================== -->
+  <script>  
+
+
+
+    // ---------------- Mobile Menu Logic (smooth slide) ----------------
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu   = document.getElementById('mobile-menu');
+    const menuIcon     = document.getElementById('menu-icon');
+    const mobileOverlay = document.getElementById('mobile-menu-overlay');
+    let mobileOpen = false;
+
+    function toggleMenu() {
+      mobileOpen = !mobileOpen;
+      if (mobileOpen) {
+        mobileOverlay.classList.remove('hidden');
+        requestAnimationFrame(() => {
+          mobileOverlay.classList.remove('opacity-0');
+          mobileMenu.classList.remove('translate-x-full');
+        });
+        menuIcon.style.transform = 'rotate(90deg)';
+        setTimeout(() => {
+          menuIcon.className = 'fa-solid fa-xmark text-2xl transition-transform duration-300 text-sultanGreen';
+          menuIcon.style.transform = 'rotate(0deg)';
+        }, 150);
+      } else {
+        mobileOverlay.classList.add('opacity-0');
+        mobileMenu.classList.add('translate-x-full');
+        menuIcon.style.transform = 'rotate(-90deg)';
+        setTimeout(() => {
+          menuIcon.className = 'fa-solid fa-bars text-2xl transition-transform duration-300';
+          menuIcon.style.transform = 'rotate(0deg)';
+        }, 150);
+        setTimeout(() => {
+          mobileOverlay.classList.add('hidden');
+        }, 300);
+      }
+    }
+
+    mobileMenuBtn.addEventListener('click', toggleMenu);
+    if(mobileOverlay) mobileOverlay.addEventListener('click', toggleMenu);
+
+    // Close mobile menu on nav link click
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        if(mobileOpen) toggleMenu();
+      });
+    });
+
+    // ---------------- Sticky Header on scroll ----------------
+    const header = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        header.classList.add('py-1', 'shadow-md');
+        header.classList.remove('shadow-soft');
+      } else {
+        header.classList.remove('py-1', 'shadow-md');
+        header.classList.add('shadow-soft');
+      }
+    }, { passive: true });
+
+    // ---------------- Active Nav Highlighter ----------------
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        if (pageYOffset >= section.offsetTop - 130) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active-nav');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active-nav');
+        }
+      });
+    }, { passive: true });
+
+    // ---------------- Scroll Reveal (IntersectionObserver) ----------------
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+
+
+  </script>
+</body>
+</html>
