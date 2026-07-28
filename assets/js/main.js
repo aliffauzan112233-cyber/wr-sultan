@@ -84,3 +84,17 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ---------------- Modal Menu Scroll Lock ----------------
+    const menuModalCheckbox = document.getElementById('menu-modal');
+    if (menuModalCheckbox) {
+      menuModalCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+          // Kunci scroll layar utama
+          document.body.style.overflow = 'hidden';
+        } else {
+          // Buka kembali scroll
+          document.body.style.overflow = '';
+        }
+      });
+    }
