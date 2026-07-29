@@ -140,12 +140,28 @@
       from { opacity: 0; transform: scale(0.92); }
       to   { opacity: 1; transform: scale(1); }
     }
+    @keyframes fadeScaleIn {
+      from { opacity: 0; transform: scale(0.92); }
+      to   { opacity: 1; transform: scale(1); }
+    }
     @keyframes floatGentle {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-8px); }
     }
-    .float-gentle {
-      animation: floatGentle 4s ease-in-out infinite;
+    @keyframes floatDynamic {
+      0% { transform: translateY(0) rotate(0deg) scale(1); }
+      33% { transform: translateY(-12px) rotate(1.5deg) scale(1.02); }
+      66% { transform: translateY(8px) rotate(-1.5deg) scale(0.98); }
+      100% { transform: translateY(0) rotate(0deg) scale(1); }
+    }
+    @keyframes softMorph {
+      0% { border-radius: 40% 60% 60% 40% / 50% 50% 50% 50%; }
+      33% { border-radius: 50% 50% 40% 60% / 40% 60% 50% 50%; }
+      66% { border-radius: 60% 40% 50% 50% / 50% 40% 60% 50%; }
+      100% { border-radius: 40% 60% 60% 40% / 50% 50% 50% 50%; }
+    }
+    .animate-soft-morph {
+      animation: softMorph 12s ease-in-out infinite;
     }
 
     .hero-badge       { animation: badgeBounceIn  0.7s cubic-bezier(.4,0,.2,1) 0.2s both; }

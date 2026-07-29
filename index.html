@@ -127,7 +127,10 @@
 
   <!-- ==================== STICKY HEADER & NAVBAR ==================== -->
   <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-sultanCream/95 backdrop-blur-md border-b border-sultanSage/20 shadow-soft">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Batik Background Overlay for Navbar -->
+    <div class="absolute inset-0 z-0 opacity-[0.25] pointer-events-none mix-blend-multiply" style="background-image: url('img/batik_bg.png'); background-size: 400px; background-repeat: repeat;"></div>
+    
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16 md:h-20 transition-all duration-300">
         <!-- Logo -->
         <a href="#home" class="flex items-center group">
@@ -229,39 +232,52 @@
             </a>
           </div>
 
-          <!-- Trust Badges: stagger one-by-one -->
-          <div class="hero-trust flex justify-around md:justify-start gap-x-3 sm:gap-x-8 pt-6 sm:pt-8 text-xs md:text-sm text-sultanText-dark border-t border-sultanSage/20 w-full">
-            <div class="trust-badge flex flex-col items-center space-y-2">
-              <i class="fa-solid fa-certificate text-sultanGreen text-2xl sm:text-3xl"></i>
-              <span class="font-medium text-center leading-tight">100% Halal</span>
-            </div>
-            <div class="trust-badge flex flex-col items-center space-y-2">
-              <i class="fa-solid fa-leaf text-sultanGreen text-2xl sm:text-3xl"></i>
-              <span class="font-medium text-center leading-tight">Bahan Baku Segar</span>
-            </div>
-            <div class="trust-badge flex flex-col items-center space-y-2">
-              <i class="fa-solid fa-shield-halved text-sultanGreen text-2xl sm:text-3xl"></i>
-              <span class="font-medium text-center leading-tight">Tanpa Pengawet</span>
-            </div>
-          </div>
+          <!-- Trust badges moved to floating tags on the hero image -->
         </div>
 
         <!-- Hero Images Layout -->
         <div class="md:col-span-6 relative flex justify-center mt-12 sm:mt-16 md:mt-0">
           <div class="relative w-full max-w-[360px] sm:max-w-[460px] lg:max-w-[500px] aspect-[4/3] sm:aspect-square flex items-center justify-center p-4">
             
-            <!-- Rotating dashed ring background -->
-            <div class="absolute inset-4 sm:inset-6 rounded-full bg-sultanSage/15 -z-10 border-2 border-dashed border-sultanGreen/25 animate-[spin_60s_linear_infinite]"></div>
-
             <!-- Gambar Utama Warung -->
-            <div class="hero-img-main w-full h-full z-10 flex items-center justify-center">
-              <div class="float-gentle w-[90%] h-[90%] sm:w-[85%] sm:h-[85%]">
-                <!-- Border/Outline lembut warna hijau/cream dengan ring, rounded soft, premium shadow, hover effects -->
-                <div class="w-full h-full rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden border-[6px] sm:border-[8px] border-white ring-4 ring-sultanSage/40 shadow-premium transition-all duration-500 hover:shadow-[0_30px_60px_-15px_rgba(46,125,50,0.4)] hover:scale-[1.02] group bg-sultanCream relative">
-                  <!-- Overlay gradient lembut (opsional untuk warmth) -->
-                  <div class="absolute inset-0 bg-gradient-to-tr from-sultanGreen/10 to-transparent z-10 pointer-events-none mix-blend-overlay"></div>
-                  <img src="img/img1.jpg" alt="Warung Makan Sultan" class="w-full h-full object-cover animate-slow-pan relative z-0">
+            <div class="hero-img-main w-full h-full z-10 flex items-center justify-center relative">
+              <div class="animate-[floatGentle_8s_ease-in-out_infinite] w-[85%] h-[85%] sm:w-[80%] sm:h-[80%] relative z-10">
+                
+                <!-- Main Image Card (Modern Rounded Rectangle) -->
+                <div class="w-full h-full rounded-[2.5rem] overflow-hidden border-[4px] sm:border-[6px] border-white bg-white shadow-[0_20px_40px_-15px_rgba(0,0,0,0.2)] transition-transform duration-700 hover:scale-[1.03] group relative z-10">
+                  <img src="img/img1.jpg" alt="Warung Makan Sultan" class="w-full h-full object-cover transition-transform duration-[12s] ease-out group-hover:scale-[1.15]">
                 </div>
+                
+                <!-- Floating Trust Tag 1 (Top Right Edge) -->
+                <div class="absolute top-[15%] right-0 translate-x-[45%] sm:translate-x-1/2 z-20">
+                  <div class="bg-white/95 backdrop-blur-md py-2 px-3 sm:py-2.5 sm:px-4 rounded-2xl shadow-[0_8px_25px_-5px_rgba(0,0,0,0.1)] border border-white/60 flex items-center space-x-2.5 animate-[floatGentle_4s_ease-in-out_infinite_0.1s]">
+                    <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-sultanGreen/10 flex items-center justify-center shrink-0">
+                      <i class="fa-solid fa-certificate text-sultanGreen text-xs sm:text-sm"></i>
+                    </div>
+                    <span class="font-bold text-sultanText-dark text-[11px] sm:text-xs tracking-wider uppercase whitespace-nowrap pr-1">100% Halal</span>
+                  </div>
+                </div>
+
+                <!-- Floating Trust Tag 2 (Bottom Outside) -->
+                <div class="absolute -bottom-3 sm:-bottom-5 left-1/2 -translate-x-1/2 translate-y-full z-20">
+                  <div class="bg-sultanGreen text-white py-2 px-3 sm:py-2.5 sm:px-4 rounded-2xl shadow-[0_10px_25px_-5px_rgba(46,125,50,0.4)] border border-white/20 flex items-center space-x-2.5 animate-[floatGentle_5s_ease-in-out_infinite_0.5s]">
+                    <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+                      <i class="fa-solid fa-leaf text-white text-xs sm:text-sm"></i>
+                    </div>
+                    <span class="font-bold text-[11px] sm:text-xs tracking-wider uppercase whitespace-nowrap pr-1">Bahan Baku Segar</span>
+                  </div>
+                </div>
+
+                <!-- Floating Trust Tag 3 (Left Edge) -->
+                <div class="absolute top-[55%] left-0 -translate-x-[45%] sm:-translate-x-1/2 z-20">
+                  <div class="bg-white/95 backdrop-blur-md py-2 px-3 sm:py-2.5 sm:px-4 rounded-2xl shadow-[0_8px_25px_-5px_rgba(0,0,0,0.1)] border border-white/60 flex items-center space-x-2.5 animate-[floatGentle_4.5s_ease-in-out_infinite_0.8s]">
+                    <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-amber-500/10 flex items-center justify-center shrink-0">
+                      <i class="fa-solid fa-shield-halved text-amber-500 text-xs sm:text-sm"></i>
+                    </div>
+                    <span class="font-bold text-sultanText-dark text-[11px] sm:text-xs tracking-wider uppercase whitespace-nowrap pr-1">Tanpa Pengawet</span>
+                  </div>
+                </div>
+
               </div>
             </div>
 
@@ -768,17 +784,17 @@
   </section>
 
   <!-- ==================== FOOTER ==================== -->
-  <footer class="bg-sultanText-dark text-sultanCream-light pt-12 md:pt-16 pb-8 border-t border-sultanSage/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <footer class="relative bg-sultanText-dark text-sultanCream-light pt-12 md:pt-16 pb-8 border-t border-sultanSage/10 overflow-hidden">
+    <!-- Batik Background Overlay -->
+    <div class="absolute inset-0 z-0 opacity-[0.2] pointer-events-none mix-blend-luminosity" style="background-image: url('img/batik_bg.png'); background-size: 400px; background-repeat: repeat;"></div>
+    
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 pb-12 border-b border-sultanCream/10">
         
         <!-- Brand Info -->
         <div class="md:col-span-5 space-y-4">
-          <a href="#home" class="flex items-center space-x-2">
-            <div class="w-9 h-9 bg-sultanGreen rounded-xl flex items-center justify-center text-white shadow-md">
-              <i class="fa-solid fa-crown text-base"></i>
-            </div>
-            <span class="text-xl font-bold tracking-tight text-white">Warung Makan Sultan</span>
+          <a href="#home" class="inline-block group">
+            <img src="img/logo.png" alt="Logo Warung Makan Sultan" class="h-12 sm:h-14 md:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-sm">
           </a>
           <p class="text-sultanCream/60 text-xs sm:text-sm leading-relaxed max-w-sm">
             Menyajikan masakan rumahan Nusantara dengan standar rasa sultan dan higienitas prima, namun dengan harga yang merakyat bagi keluarga tercinta.
